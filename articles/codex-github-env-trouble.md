@@ -1,5 +1,5 @@
 ---
-title: "GitHub PRで@codexが動かないときに見直すこと 連携済みでもenvironment未作成で止まる"
+title: "GitHub PRで@codexが反応しないときに見直すこと environment未作成で止まっていた"
 emoji: "📝"
 type: "tech"
 topics: ["codex", "github", "ai", "review"]
@@ -76,6 +76,8 @@ Codex のコードレビュー設定画面で、個人設定が OFF になって
 下のように、まずは個人のコードレビュー設定を ON にしておく必要がありました。
 
 ![Codex のコードレビュー設定画面。個人設定まわりを確認したスクリーンショット](/images/articles/codex-github-integration-troubleshooting/codex-code-review-settings.png)
+
+スクリーンショットは、個人情報や不要な周辺情報を避けるためにトリミングしています。
 
 私の環境では、ここで次の状態にしました。
 
