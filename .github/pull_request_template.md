@@ -1,24 +1,24 @@
-## Summary
+## 概要
 
-- add or update Zenn content
-- if needed, request Codex review with `@codex review`
+- Zenn 記事または関連設定を追加・更新
+- 必要なら `@codex review` でレビュー依頼
 
-## Review Checklist
+## レビューチェック
 
-- [ ] front matter is correct
-- [ ] `npm run check` passed
-- [ ] local preview was checked when layout changed
-- [ ] no confidential or unverified content is included
-- [ ] merging this PR into `main` is safe for Zenn sync
-- [ ] if this should stay draft after merge, add the `zenn:draft` label
+- [ ] front matter が正しい
+- [ ] `npm run check` が通っている
+- [ ] レイアウトが変わる場合はローカル preview を確認した
+- [ ] 機密情報や未確認情報が含まれていない
+- [ ] `main` へ merge して Zenn 同期してよい内容になっている
+- [ ] 下書きのまま残したい場合は `zenn:draft` ラベルを付ける
 
-## Mobile Review Notes
+## スマホレビュー用メモ
 
-- Use PR comments for structural or wording changes
-- Use `@codex review` for an AI review pass
-- Use `@codex` with a concrete instruction to update the PR branch
+- 文言や構成の修正は PR コメントで指示する
+- `@codex review` で AI レビューを依頼できる
+- `@codex` に具体的な修正指示を書くと PR ブランチ更新に使いやすい
 
-Example:
+コメント例:
 
 ```text
 @codex
