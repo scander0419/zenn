@@ -47,6 +47,8 @@ npm run article:pr -- --title "記事タイトル" --topics aws,bedrock,lambda
 - GitHub Actions の `validate-zenn` が走る
 - Front Matter や本文を確認する
 - 必要ならローカルで `npm run preview` を確認する
+- 必要なら `@codex review` で Codex にレビューさせる
+- 修正依頼は PR コメントで `@codex` 宛に具体的に書く
 
 ### 3. `main` にマージする
 
@@ -80,6 +82,26 @@ npm run article:pr -- --title "記事タイトル" --topics aws,bedrock,lambda
 - `validate-zenn` ワークフローは PR と `main` push の両方で動く
 - `main` への直接 push を強く防ぎたい場合は GitHub の branch protection を有効化する
 - 今回の `private` リポジトリでは、branch protection API は GitHub 側のプラン制約で有効化できなかった
+- Codex の GitHub 連携が有効なら、PR コメントで `@codex review` や `@codex` 指示を使える
+
+## スマホ確認フロー
+
+1. Codex で記事草案を PR 化する
+2. GitHub アプリで PR を読む
+3. 軽微な修正は GitHub 上で直接直すか、PR コメントで指示する
+4. 構成や文言の修正は `@codex` コメントで PR ブランチに反映させる
+5. `validate-zenn` の再チェックが通ったら merge する
+6. `main` 反映で Zenn が同期する
+
+PR コメントの例:
+
+```text
+@codex
+- タイトルをもっと具体化
+- 結論を先に出す
+- この段落を 2 段落に分ける
+- published は false のまま
+```
 
 公式ドキュメント:
 

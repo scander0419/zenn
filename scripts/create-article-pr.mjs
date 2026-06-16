@@ -64,6 +64,7 @@ function buildPrBody(articlePath, published) {
 
 - add article at \`${articlePath}\`
 - published: \`${published}\`
+- request Codex review if needed with \`@codex review\`
 
 ## Review Checklist
 
@@ -72,6 +73,23 @@ function buildPrBody(articlePath, published) {
 - [ ] local preview was checked when needed
 - [ ] no confidential or unverified content is included
 - [ ] merge to \`main\` is safe for Zenn sync
+
+## Mobile Review Notes
+
+- Review this PR in the GitHub mobile app
+- Use PR comments for wording or structure feedback
+- Use \`@codex\` with concrete instructions to update only this PR branch
+- Keep \`published: false\` unless this PR is ready to go live on Zenn
+
+Example:
+
+\`\`\`text
+@codex
+- タイトルをもっと具体化
+- 結論を先に出す
+- ハマりどころを短く整理
+- published は false のまま
+\`\`\`
 `;
 }
 
