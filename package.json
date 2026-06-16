@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "article:new": "node ./scripts/create-article.mjs",
+    "article:pr": "node ./scripts/create-article-pr.mjs",
     "article:new:cli": ".\\node_modules\\.bin\\zenn.cmd new:article",
     "book:new": ".\\node_modules\\.bin\\zenn.cmd new:book",
     "preview": ".\\node_modules\\.bin\\zenn.cmd preview --open",
