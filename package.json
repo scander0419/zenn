@@ -1,0 +1,16 @@
+{
+  "name": "zenn",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "article:new": "node ./scripts/create-article.mjs",
+    "article:new:cli": ".\\node_modules\\.bin\\zenn.cmd new:article",
+    "book:new": ".\\node_modules\\.bin\\zenn.cmd new:book",
+    "preview": ".\\node_modules\\.bin\\zenn.cmd preview --open",
+    "preview:ci": ".\\node_modules\\.bin\\zenn.cmd preview --no-watch --port 8000",
+    "check": "node ./scripts/check-zenn-articles.mjs"
+  },
+  "devDependencies": {
+    "zenn-cli": "^0.5.1"
+  }
+}
