@@ -1,0 +1,4 @@
+interface:
+  display_name: "Zenn PR Writer"
+  short_description: "Draft Zenn articles and open review PRs"
+  default_prompt: "Use $zenn-pr-writer to turn my notes into a Zenn article and open a draft PR for review."

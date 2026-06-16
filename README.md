@@ -84,6 +84,13 @@ npm run article:pr -- --title "記事タイトル" --topics aws,bedrock,lambda
 - 今回の `private` リポジトリでは、branch protection API は GitHub 側のプラン制約で有効化できなかった
 - Codex の GitHub 連携が有効なら、PR コメントで `@codex review` や `@codex` 指示を使える
 
+## 含まれているもの
+
+- `scripts/`: Zenn 記事の作成、PR 化、検証
+- `.github/`: PR テンプレートと GitHub Actions
+- `AGENTS.md`: Codex が記事レビュー時に守る運用ルール
+- `skills/zenn-pr-writer/`: Zenn 記事草案を PR まで進めるためのスキル定義
+
 ## スマホ確認フロー
 
 1. Codex で記事草案を PR 化する
