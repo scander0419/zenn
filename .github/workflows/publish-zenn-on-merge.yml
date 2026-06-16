@@ -1,0 +1,68 @@
+name: publish-zenn-on-merge
+
+on:
+  pull_request:
+    types:
+      - closed
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  publish:
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main' && !contains(github.event.pull_request.labels.*.name, 'zenn:draft')
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/github-script@v7
+        id: files
+        with:
+          script: |
+            const pr = context.payload.pull_request;
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number,
+              per_page: 100,
+            });
+
+            const articleFiles = files
+              .filter((file) => file.filename.startsWith("articles/") && file.filename.endsWith(".md"))
+              .map((file) => file.filename);
+
+            core.setOutput("count", String(articleFiles.length));
+            core.setOutput("files", articleFiles.join("\n"));
+
+      - if: steps.files.outputs.count != '0'
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - if: steps.files.outputs.count != '0'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - if: steps.files.outputs.count != '0'
+        name: Promote merged articles to published
+        shell: bash
+        run: |
+          printf '%s\n' "${{ steps.files.outputs.files }}" > article-files.txt
+          mapfile -t files < article-files.txt
+          node ./scripts/promote-zenn-published.mjs "${files[@]}"
+
+      - if: steps.files.outputs.count != '0'
+        name: Commit and push publication update
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No publication changes to commit."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add articles
+          git commit -m "Publish merged Zenn article(s)"
+          git push origin HEAD:main

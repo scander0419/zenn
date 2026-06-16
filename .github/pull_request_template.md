@@ -10,6 +10,7 @@
 - [ ] local preview was checked when layout changed
 - [ ] no confidential or unverified content is included
 - [ ] merging this PR into `main` is safe for Zenn sync
+- [ ] if this should stay draft after merge, add the `zenn:draft` label
 
 ## Mobile Review Notes
 

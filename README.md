@@ -54,20 +54,23 @@ npm run article:pr -- --title "記事タイトル" --topics aws,bedrock,lambda
 
 `main` は Zenn の同期対象ブランチです。PR をマージすると、その push をきっかけに Zenn 側が同期します。
 
+このリポジトリでは、`articles/*.md` を含む PR が `main` に merge されると、GitHub Actions が `published: false` を `published: true` に引き上げて `main` に push します。つまり、通常の運用では **merge が公開トリガー** です。
+
 `published: true` の記事:
 
 - マージ後に公開記事として同期される
 
 `published: false` の記事:
 
-- マージ後に下書きとして同期される
+- 通常の article PR では merge 後に Actions が `published: true` に更新し、公開記事として同期される
+- 下書きのまま残したい場合は PR に `zenn:draft` ラベルを付けて merge する
 
 ## 運用ルール
 
 - 初期値は `published: false`
 - まずは PR でレビューする
-- 下書き運用なら `published: false` のままマージする
-- 公開したい場合は `published: true` にしてマージする
+- 通常は `published: false` のまま PR を作り、merge 時に自動公開する
+- 下書き運用にしたい PR は `zenn:draft` ラベルを付けて merge する
 - 誤公開を防ぐため、Zenn の同期対象は `main` のみにする
 
 ## GitHub 連携
@@ -80,6 +83,7 @@ npm run article:pr -- --title "記事タイトル" --topics aws,bedrock,lambda
 ## 補足
 
 - `validate-zenn` ワークフローは PR と `main` push の両方で動く
+- `publish-zenn-on-merge` は article PR の merge を検知して公開コミットを追加する
 - `main` への直接 push を強く防ぎたい場合は GitHub の branch protection を有効化する
 - 今回の `private` リポジトリでは、branch protection API は GitHub 側のプラン制約で有効化できなかった
 - Codex の GitHub 連携が有効なら、PR コメントで `@codex review` や `@codex` 指示を使える
