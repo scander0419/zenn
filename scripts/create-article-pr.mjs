@@ -60,28 +60,29 @@ function run(command, commandArgs) {
 }
 
 function buildPrBody(articlePath, published) {
-  return `## Summary
+  return `## 概要
 
-- add article at \`${articlePath}\`
-- published: \`${published}\`
-- request Codex review if needed with \`@codex review\`
+- \`${articlePath}\` に記事を追加
+- 現在の \`published\`: \`${published}\`
+- 必要なら \`@codex review\` でレビュー依頼
 
-## Review Checklist
+## レビューチェック
 
-- [ ] front matter is correct
-- [ ] \`npm run check\` passed
-- [ ] local preview was checked when needed
-- [ ] no confidential or unverified content is included
-- [ ] merge to \`main\` is safe for Zenn sync
+- [ ] front matter が正しい
+- [ ] \`npm run check\` が通っている
+- [ ] 必要ならローカル preview を確認した
+- [ ] 機密情報や未確認情報が含まれていない
+- [ ] \`main\` へ merge して Zenn 同期してよい内容になっている
+- [ ] 下書きのまま残したい場合は \`zenn:draft\` ラベルを付ける
 
-## Mobile Review Notes
+## スマホレビュー用メモ
 
-- Review this PR in the GitHub mobile app
-- Use PR comments for wording or structure feedback
-- Use \`@codex\` with concrete instructions to update only this PR branch
-- Keep \`published: false\` unless this PR is ready to go live on Zenn
+- GitHub モバイルアプリで PR を確認する
+- 文言や構成の修正は PR コメントで指示する
+- \`@codex\` への具体的な指示は、この PR ブランチだけを更新する想定
+- merge で公開したい通常記事は \`published: false\` のままでよい
 
-Example:
+コメント例:
 
 \`\`\`text
 @codex
