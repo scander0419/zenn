@@ -1,6 +1,6 @@
 ---
 title: "Codex hooks のハマりどころ6つと「再trust地獄」の回避"
-emoji: "📝"
+emoji: "🪝"
 type: "tech"
 topics: ["codex", "openai", "windows", "ai"]
 published: false
