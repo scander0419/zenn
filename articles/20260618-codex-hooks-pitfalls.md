@@ -15,7 +15,7 @@ published: false
 
 OpenAI Codex の hooks を自動化に使おうとして、想像以上に落とし穴を踏みました。この記事はその**ハマりどころ集**です。`additionalContext` がモデルに届かない、`approval_policy="never"` でゲート系 hook が無効になる、trust の単位が直感と違う——といった、ドキュメントだけだと気づきにくい点を、実際のエラー文つきでまとめます。
 
-背景として「Anthropic の Dreaming を Codex で再現する」過程で触り倒したのですが、Dreaming 本編は別記事にしました。この記事は **Codex hooks 単体の知見**として読めます。
+背景として「Anthropic の Dreaming を Codex で再現する」過程で触り倒したのですが、Dreaming 本編は別記事（[Anthropic の Dreaming を Codex で再現する](https://zenn.dev/kakecake/articles/20260618-codex-hooks-dreaming)）にしました。この記事は **Codex hooks 単体の知見**として読めます。
 
 ## この記事でわかること
 
@@ -168,3 +168,7 @@ def main():
 - ただし**自己生成コードを実行する設計**なので、レビュー/allowlist/署名/狭いサンドボックスのゲートを足してから使うこと。
 
 `command` は文字列、`timeout` は秒、Windows サンドボックスの初期化失敗は別レイヤー——細かいですが、どれも一度はハマる地雷でした。同じところで詰まっている人の役に立てば。
+
+## 関連記事
+
+- [Anthropic の Dreaming を Codex で再現する：hooks でコンテキストを増やさず精度を上げる](https://zenn.dev/kakecake/articles/20260618-codex-hooks-dreaming) ── これらの hooks を何に使ったか（記憶の自動整理を Codex Automations で毎晩回す）はこちら。
