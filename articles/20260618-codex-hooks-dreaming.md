@@ -145,6 +145,19 @@ def main():
 
 さらに、**dream が自己改善できる範囲を広げました**。`correctors/*.py` に加え、Dreaming 管理下の `dispatch_posttooluse.py` / `hooks_status.py` / `REGISTRY.md` も自動改善対象です（変更後は `py_compile` と合成 payload で検査）。ただし**`~/.codex/config.toml` と Dreaming ルート外の hook/config は絶対に触らない**——ここが信頼境界です。夜間 runner には `--dangerously-bypass-hook-trust` を付け、hook 整備が承認待ちで止まらないようにしています。
 
+## 毎晩動かす：Codex Automations
+
+`#2`（夜間 dream）は、Codex アプリの **Automations**（スケジュール実行）で毎晩回しています。ここまでの「記憶の自動統合」「hook の自律生成・自己改善」を、人間が何もしなくても毎晩走らせている実体がこれです。
+
+設定はだいたい次のようにしました（UI ラベルは変わりうるので公式で要確認）。
+
+- **スケジュール**：daily（例：`30 23 * * *`）。母艦 PC が起動して Codex アプリが動いている時刻に。ローカル実行。
+- **実行場所**：プロジェクトを**直接更新**。worktree は使わない（全自動適用した `memory/` が canonical な本文パスへ届かないため）。
+- **Sandbox / Approval**：`workspace-write`、approval は挟まない（可能なら `approval_policy="never"`）。full access は不要。
+- **プロンプト**：`automations/dream.md` を読んで実行させるだけ（4操作＋フック監査＋自動反映を内部で指示）。
+
+ポイントは **approve 待ちを一切作らない**こと。`dream` が `memory.next/` を staging として検証し、問題なければ同じ run で `memory/` とグローバル索引へ反映し、`STATUS.md` まで更新して終わります。スケジュール前に通常スレッドで1回手動実行して、レポートと反映結果を確認してから有効化するのがおすすめです（自前 cron / Task Scheduler から `scripts/run-dream.*` を叩く形でも可）。
+
 ## 全自動の代償（安全性）
 
 この構成は便利な反面、正直に書くと危ない側面があります。memory も hook も**人間承認なしで書き換わり**、しかもディスパッチャは `correctors/*.py` を**動的に実行**します。`approval_policy="never"` / `danger-full-access` / `--dangerously-bypass-hook-trust` と組み合わせると、誤生成やプロンプトインジェクション起点の生成が、ユーザー権限で実行され得ます。
@@ -168,13 +181,14 @@ https://github.com/scander0419/codex-dreaming
 
 - `config.example.toml`（PostToolUse hook の登録）と `AGENTS.example.md`（#1 索引）をコピーして使う
 - `.codex/hooks/`（ディスパッチャ＋サンプル corrector＋`hooks_status.py`）、`automations/dream.md` / `grade.md`、`memory/`、`outcomes/schema.json`、`scripts/run-dream.*` を同梱
+- `AUTOMATION-SETUP.md` に **Codex Automations の設定手順と貼り付け用プロンプト**も入れてあります
 - 個人パスは除去済み（監査ログの出力先は `CODEX_DREAMING_AUDIT` で上書き可）
 
 ただし**全自動モードは自己生成コードを full 権限で実行する設計**なので、必ずリポジトリの `SECURITY.md` を読んでから、隔離環境で試してください。機密マシンには入れないこと。
 
 ## 関連記事
 
-- 『Codex hooks のハマりどころ6つと「再trust地獄」の回避』── 本記事で使った Codex hooks 自体の落とし穴・詰まった点はこちらにまとめました。
+- [Codex hooks のハマりどころ6つと「再trust地獄」の回避](https://zenn.dev/kakecake/articles/20260618-codex-hooks-pitfalls) ── 本記事で使った Codex hooks 自体の落とし穴・詰まった点はこちらにまとめました。
 
 ## まとめ
 
