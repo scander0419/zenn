@@ -3,7 +3,7 @@ title: "Codex hooks のハマりどころ6つと「再trust地獄」の回避"
 emoji: "🪝"
 type: "tech"
 topics: ["codex", "openai", "windows", "ai"]
-published: false
+published: true
 ---
 :::message
 個人の実験ログです。OpenAI Codex の hooks は版による挙動差が大きく、観測は **Codex CLI 0.139.0 / Codex app 26.609.71450 / Windows 11** での結果です。版が違うと挙動も変わります。
