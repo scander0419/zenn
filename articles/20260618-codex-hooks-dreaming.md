@@ -3,7 +3,7 @@ title: "Anthropic の Dreaming を Codex で再現する：hooks でコンテキ
 emoji: "🌙"
 type: "tech"
 topics: ["codex", "openai", "claude", "anthropic", "ai"]
-published: false
+published: true
 ---
 :::message
 個人の実験ログです。**全自動（人間承認なし）で記憶とフックを書き換える**構成を含みます。観測は **Codex CLI 0.139.0 / Codex app 26.609.71450 / Windows 11** での結果で、版が違うと挙動も変わります。
