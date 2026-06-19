@@ -18,7 +18,7 @@ for (const fileName of articleFiles) {
     issues.push(`${fileName}: slug must be 12-50 chars and only contain a-z, 0-9, "-", "_".`);
   }
 
-  const frontMatterMatch = raw.match(/^---\n([\s\S]*?)\n---/u);
+  const frontMatterMatch = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/u);
   if (!frontMatterMatch) {
     issues.push(`${fileName}: front matter is missing.`);
     continue;
