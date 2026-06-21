@@ -5,7 +5,6 @@ type: "tech"
 topics: ["codex", "obsidian", "automation", "ai", "journaling"]
 published: false
 ---
-[:contents]
 
 ## はじめに
 
