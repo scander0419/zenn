@@ -46,6 +46,10 @@ for (const fileName of articleFiles) {
   if (!topicsMatch) {
     issues.push(`${fileName}: topics must be an inline array, e.g. [\"aws\", \"lambda\"].`);
   }
+
+  if (raw.includes("[:contents]")) {
+    issues.push(`${fileName}: remove unsupported "[:contents]" syntax (Zenn generates the table of contents automatically).`);
+  }
 }
 
 if (issues.length > 0) {

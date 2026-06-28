@@ -48,7 +48,7 @@ Avoid:
 - `## ハマりどころ`
 - `## まとめ`
 
-Add `[:contents]` near the top for medium-to-long articles.
+Do not assume `[:contents]` is supported. Only add a table-of-contents syntax if it is confirmed by current official Zenn documentation or the target repo's established conventions.
 
 6. Default to safe publication settings.
 Set `published: false` unless the user explicitly asks for public publication in the generated article file.

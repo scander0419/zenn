@@ -9,8 +9,6 @@ published: true
 個人の実験ログです。**全自動（人間承認なし）で記憶とフックを書き換える**構成を含みます。観測は **Codex CLI 0.139.0 / Codex app 26.609.71450 / Windows 11** での結果で、版が違うと挙動も変わります。
 :::
 
-[:contents]
-
 ## はじめに
 
 Anthropic が提案している **Dreaming** を、普段使っている OpenAI Codex で再現してみました。

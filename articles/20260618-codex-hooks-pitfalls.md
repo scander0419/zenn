@@ -9,8 +9,6 @@ published: true
 個人の実験ログです。OpenAI Codex の hooks は版による挙動差が大きく、観測は **Codex CLI 0.139.0 / Codex app 26.609.71450 / Windows 11** での結果です。版が違うと挙動も変わります。
 :::
 
-[:contents]
-
 ## はじめに
 
 OpenAI Codex の hooks を自動化に使おうとして、想像以上に落とし穴を踏みました。この記事はその**ハマりどころ集**です。`additionalContext` がモデルに届かない、`approval_policy="never"` でゲート系 hook が無効になる、trust の単位が直感と違う——といった、ドキュメントだけだと気づきにくい点を、実際のエラー文つきでまとめます。

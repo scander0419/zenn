@@ -1,0 +1,12 @@
+# Normalize line endings to LF in the repository.
+# OneDrive / Windows editors sometimes rewrite the working tree to CRLF;
+# these rules keep what Git stores (and what CI checks) as LF.
+* text=auto eol=lf
+
+# Be explicit for the file types we author and validate.
+*.md   text eol=lf
+*.mjs  text eol=lf
+*.js   text eol=lf
+*.json text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf

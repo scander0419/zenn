@@ -5,7 +5,6 @@ type: "tech"
 topics: ["codex", "github", "ai", "review"]
 published: true
 ---
-[:contents]
 
 ## はじめに
 
