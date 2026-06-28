@@ -5,7 +5,6 @@ type: "tech"
 topics: ["zenn", "codex", "github", "githubactions"]
 published: true
 ---
-[:contents]
 
 ## はじめに
 

@@ -18,7 +18,7 @@ for (const fileName of articleFiles) {
     issues.push(`${fileName}: slug must be 12-50 chars and only contain a-z, 0-9, "-", "_".`);
   }
 
-  const frontMatterMatch = raw.match(/^---\n([\s\S]*?)\n---/u);
+  const frontMatterMatch = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/u);
   if (!frontMatterMatch) {
     issues.push(`${fileName}: front matter is missing.`);
     continue;
@@ -45,6 +45,10 @@ for (const fileName of articleFiles) {
   const topicsMatch = frontMatter.match(/^topics:\s+\[(.*)\]\s*$/mu);
   if (!topicsMatch) {
     issues.push(`${fileName}: topics must be an inline array, e.g. [\"aws\", \"lambda\"].`);
+  }
+
+  if (raw.includes("[:contents]")) {
+    issues.push(`${fileName}: remove unsupported "[:contents]" syntax (Zenn generates the table of contents automatically).`);
   }
 }
 
