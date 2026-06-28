@@ -9,6 +9,14 @@ feature branch で記事を作る
 -> Zenn が main ブランチを自動同期する
 ```
 
+## 記事の書き方ガイド
+
+- PC で書く → [`WRITING.md`](./WRITING.md)
+- iPhone で出先で書く（GitHub Web エディタ・無料）→ [`MOBILE-WRITING.md`](./MOBILE-WRITING.md)
+- 記事の雛形 → [`templates/article-template.md`](./templates/article-template.md)
+
+このファイル（README）は運用と仕組みの説明です。具体的な執筆手順は上のガイドを参照してください。
+
 ## セットアップ
 
 ```bash
@@ -96,6 +104,8 @@ npm run article:pr -- --title "記事タイトル" --topics aws,bedrock,lambda
 - `skills/zenn-pr-writer/`: Zenn 記事草案を PR まで進めるためのスキル定義
 
 ## スマホ確認フロー
+
+これは PR を**レビュー**する流れです。iPhone で記事を**書く**手順は [`MOBILE-WRITING.md`](./MOBILE-WRITING.md) を参照してください。
 
 1. Codex で記事草案を PR 化する
 2. GitHub アプリで PR を読む
